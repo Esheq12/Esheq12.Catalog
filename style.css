@@ -39,23 +39,23 @@ h1{
 
 #products{
     display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-    gap:20px;
-    padding:20px;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+    padding:16px;
 }
 
 .card{
     background:#fff;
     border-radius:16px;
     overflow:hidden;
-    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+    cursor:pointer;
     transition:.2s;
 }
 
 .card:hover{
-    transform:translateY(-4px);
+    transform:translateY(-3px);
 }
-
 .card img{
     width:100%;
     aspect-ratio:1/1;
@@ -63,19 +63,30 @@ h1{
     background:#fff;
     padding:10px;
 }
-
 .card-content{
     padding:15px;
 }
 
 .card h3{
-    font-size:18px;
-    min-height:50px;
-    margin-bottom:10px;
+    font-size:15px;
+    line-height:1.4;
+    height:42px;
+    overflow:hidden;
 }
 
 .price{
-    color:#0b8f55;
-    font-size:22px;
-    font-weight:bold;
+    font-size:20px;
+    font-weight:700;
+    color:#0B8F55;
+    margin-top:8px;
+}
+
+@media (min-width:900px){
+
+    #products{
+
+        grid-template-columns:repeat(4,1fr);
+
+    }
+
 }
