@@ -87,6 +87,24 @@ h1{
 
         grid-template-columns:repeat(4,1fr);
 
+  .add-cart{
+    width:100%;
+    margin-top:12px;
+    padding:12px;
+    border:none;
+    border-radius:12px;
+    background:#0B8F55;
+    color:#fff;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.add-cart:hover{
+    opacity:.9;
+}      
+
     }
 
 }
