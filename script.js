@@ -44,16 +44,19 @@ function renderProducts(){
 
 <div class="card">
 
-<img src="${product.Image}" loading="lazy">
+    <img src="${product.Image}" alt="${product["الاسم"]}">
 
-<div class="card-content">
+    <h3>${product["الاسم"]}</h3>
 
-<h3>${product["الاسم"]}</h3>
+    <div class="price">
+        ${product["السعر"]} ر.س
+    </div>
 
-<div class="price">${product["السعر"]} ر.س</div>
+    <button class="add-cart">
+        🛒 أضف للسلة
+    </button>
 
 </div>
-
 </div>
 
 `;
