@@ -112,3 +112,13 @@ search.addEventListener("input",updateProducts);
 category.addEventListener("change",updateProducts);
 
 sort.addEventListener("change",updateProducts);
+
+const modal=document.getElementById("productModal");
+
+modal.style.display="block";
+
+document.querySelector(".close").onclick=()=>{
+
+    modal.style.display="none";
+
+};
