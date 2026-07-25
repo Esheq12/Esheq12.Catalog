@@ -40,10 +40,11 @@ function renderProducts(){
 
     filtered.forEach(product=>{
 
-        productsDiv.innerHTML += `
+       const card = document.createElement("div");
 
-<div class="card">
+card.className = "card";
 
+card.innerHTML = `
     <img src="${product.Image}" alt="${product["الاسم"]}">
 
     <h3>${product["الاسم"]}</h3>
@@ -55,12 +56,9 @@ function renderProducts(){
     <button class="add-cart">
         🛒 أضف للسلة
     </button>
-
-</div>
-</div>
-
 `;
 
+productsDiv.appendChild(card);
     });
 
 }
@@ -113,12 +111,9 @@ category.addEventListener("change",updateProducts);
 
 sort.addEventListener("change",updateProducts);
 
-const modal=document.getElementById("productModal");
+const modal = document.getElementById("productModal");
+const modalBody = document.getElementById("modalBody");
 
-modal.style.display="block";
-
-document.querySelector(".close").onclick=()=>{
-
-    modal.style.display="none";
-
+document.querySelector(".close").onclick = () => {
+    modal.style.display = "none";
 };
