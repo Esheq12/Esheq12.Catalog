@@ -113,6 +113,8 @@ category.addEventListener("change",updateProducts);
 
 sort.addEventListener("change",updateProducts);
 
+console.log(document.getElementById("productModal"));
+
 const modal=document.getElementById("productModal");
 
 modal.style.display="block";
