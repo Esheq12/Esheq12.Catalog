@@ -22,7 +22,7 @@ fetch(api)
 
 function loadCategories(){
 
-    const cats = [...new Set(products.map(p=>p["القسم"]).filter(Boolean))];
+    const cats = [...new Set(products.map(p=>p["الأقسام"]).filter(Boolean))];
 
     cats.sort();
 
@@ -90,7 +90,7 @@ function updateProducts(){
 
     if(category.value){
 
-        filtered = filtered.filter(p=>p["القسم"]===category.value);
+        filtered = filtered.filter(p=>p["الأقسام"]===category.value);
 
     }
 
