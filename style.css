@@ -88,12 +88,12 @@ h1{
         grid-template-columns:repeat(4,1fr);
 
   .add-cart{
-    width:50%;
+    width:70%;
     margin-top:12px;  
     padding:12px;
     border:none;
     border-radius:12px;
-    background:#494a37;
+    background:#a54c45;
     color:#fff;
     font-size:15px;
     font-weight:600;
