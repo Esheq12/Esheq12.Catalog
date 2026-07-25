@@ -57,8 +57,19 @@ card.innerHTML = `
         🛒 أضف للسلة
     </button>
 `;
+const addBtn = card.querySelector(".add-cart");
 
+addBtn.addEventListener("click", (e) => {
+
+    e.stopPropagation();
+
+    alert("سيتم ربط السلة في الخطوة القادمة");
+
+});
 productsDiv.appendChild(card);
+card.addEventListener("click", () => {
+    openProduct(product);
+});
     });
 
 }
@@ -117,3 +128,19 @@ const modalBody = document.getElementById("modalBody");
 document.querySelector(".close").onclick = () => {
     modal.style.display = "none";
 };
+
+function openProduct(product){
+
+    modalBody.innerHTML = `
+        <img src="${product.Image}" style="width:100%;border-radius:14px;">
+
+        <h2>${product["الاسم"]}</h2>
+
+        <div class="price">${product["السعر"]} ر.س</div>
+
+        <p>${product["الوصف"] || ""}</p>
+    `;
+
+    modal.style.display = "block";
+
+}
