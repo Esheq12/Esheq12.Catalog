@@ -132,15 +132,3 @@ h1{
     left:18px;
     top:12px;
 
-.site-header{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    margin-bottom:22px;
-}
-
-.logo{
-    width:72px;
-    height:auto;
-    display:block;
-}
