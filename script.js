@@ -22,7 +22,17 @@ fetch(api)
 
 function loadCategories(){
 
-    const cats = [...new Set(products.map(p=>p["الأقسام"]).filter(Boolean))];
+    category.innerHTML = `<option value="">جميع الأقسام</option>`;
+
+    const cats = [...new Set(
+
+        products
+            .flatMap(p => (p["الأقسام"] || "")
+            .split(",")
+            .map(c => c.trim()))
+            .filter(Boolean)
+
+    )];
 
     cats.sort();
 
@@ -90,7 +100,14 @@ function updateProducts(){
 
     if(category.value){
 
-        filtered = filtered.filter(p=>p["الأقسام"]===category.value);
+       filtered = filtered.filter(p =>
+
+    (p["الأقسام"] || "")
+        .split(",")
+        .map(c => c.trim())
+        .includes(category.value)
+
+);
 
     }
 
