@@ -86,11 +86,9 @@ h1{
     #products{
 
         grid-template-columns:repeat(4,1fr);
-
- .add-cart{
-
-    appearance: none;
-    -webkit-appearance: none;
+    }
+}
+.add-cart{
 
     display:flex;
     justify-content:center;
@@ -112,12 +110,12 @@ h1{
     font-weight:600;
 
     cursor:pointer;
+
+    transition:.2s;
 }
 
 .add-cart:hover{
-
     background:#38392A;
-
 }
 
 }
@@ -144,4 +142,4 @@ h1{
     position:absolute;
     left:18px;
     top:12px;
-
+}
