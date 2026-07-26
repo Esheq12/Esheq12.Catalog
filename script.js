@@ -224,7 +224,7 @@ function openCart(){
 
     alert("اشتغلت");
 
-    cartModal.style.display = "block";
+    cartModal.style.display = "flex";
 
 }
 
