@@ -183,10 +183,4 @@ h1{
     font-weight:600;
 
 }
-.close-cart{
-    position:absolute;
-    left:18px;
-    top:12px;
-    cursor:pointer;
-    font-size:28px;
-}
+cartSheet.classList.add("show");
