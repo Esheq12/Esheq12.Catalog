@@ -133,21 +133,14 @@ h1{
     top:12px;
 
 .site-header{
-
-    text-align:center;
-
-    margin-bottom:30px;
-
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:22px;
 }
 
 .logo{
-    width:68px;
+    width:72px;
     height:auto;
     display:block;
-    margin:0 auto;
-}
-
-.site-header{
-    text-align:center;
-    margin-bottom:22px;
 }
