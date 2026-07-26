@@ -65,7 +65,7 @@ card.innerHTML = `
     </div>
 
     <button class="add-cart">
-        🛒 أضف للسلة
+        🛒 إضافة للسلة
     </button>
 `;
 const addBtn = card.querySelector(".add-cart");
