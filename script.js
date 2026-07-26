@@ -229,19 +229,20 @@ function openCart(){
 
         cartBody.innerHTML += `
 
-        <div class="cart-item">
+            <div class="cart-item">
 
-            <h3>${item["الاسم"]}</h3>
+                <h3>${item["الاسم"]}</h3>
 
-            <div>${item.qty} × ${item["السعر"]} ر.س</div>
+                <div>${item.qty} × ${item["السعر"]} ر.س</div>
 
-        </div>
+            </div>
 
-        <hr>
+            <hr>
 
         `;
 
     });
 
     cartSheet.classList.add("show");
+
 }
