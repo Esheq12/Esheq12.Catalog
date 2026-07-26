@@ -146,3 +146,38 @@ h1{
     left:18px;
     top:12px;
 }
+.cart-bar{
+
+    position:fixed;
+
+    bottom:20px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:min(92%,420px);
+
+    background:#454836;
+
+    color:#fff;
+
+    border-radius:30px;
+
+    padding:14px 20px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.18);
+
+    cursor:pointer;
+
+    z-index:999;
+
+    font-weight:600;
+
+}
