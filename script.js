@@ -145,7 +145,14 @@ sort.addEventListener("change",updateProducts);
 
 const modal = document.getElementById("productModal");
 const modalBody = document.getElementById("modalBody");
+const cartModal = document.getElementById("cartModal");
+const cartBody = document.getElementById("cartBody");
 
+document.querySelector(".close-cart").onclick = () => {
+
+    cartModal.style.display = "none";
+
+};
 document.querySelector(".close").onclick = () => {
     modal.style.display = "none";
 };
@@ -209,5 +216,32 @@ function updateCartBar(){
     cartCount.textContent = `🛒 ${totalQty} منتج`;
 
     cartTotal.textContent = `${totalPrice} ر.س`;
+
+}
+cartBar.addEventListener("click", openCart);
+
+function openCart(){
+
+    cartBody.innerHTML = "<h2>🛒 السلة</h2>";
+
+    cart.forEach(item=>{
+
+        cartBody.innerHTML += `
+
+        <div class="cart-item">
+
+            <h3>${item["الاسم"]}</h3>
+
+            <div>${item.qty} × ${item["السعر"]} ر.س</div>
+
+        </div>
+
+        <hr>
+
+        `;
+
+    });
+
+    cartModal.style.display = "block";
 
 }
