@@ -145,7 +145,7 @@ sort.addEventListener("change",updateProducts);
 
 const modal = document.getElementById("productModal");
 const modalBody = document.getElementById("modalBody");
-const cartModal = document.getElementById("cartModal");
+const cartSheet = document.getElementById("cartSheet");
 const cartBody = document.getElementById("cartBody");
 
 document.querySelector(".close-cart").onclick = () => {
@@ -153,10 +153,11 @@ document.querySelector(".close-cart").onclick = () => {
     cartModal.style.display = "none";
 
 };
-document.querySelector(".close").onclick = () => {
-    modal.style.display = "none";
-};
+document.getElementById("closeCart").onclick = () => {
 
+    cartSheet.classList.remove("show");
+
+};
 function openProduct(product){
 
     modalBody.innerHTML = `
@@ -242,6 +243,5 @@ function openCart(){
 
     });
 
-    cartModal.style.display = "flex";
-
+    cartSheet.classList.add("show");
 }
