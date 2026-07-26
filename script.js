@@ -245,3 +245,4 @@ function openCart(){
     cartModal.style.display = "block";
 
 }
+}
