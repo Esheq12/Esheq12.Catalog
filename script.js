@@ -222,7 +222,7 @@ cartBar.addEventListener("click", openCart);
 
 function openCart(){
 
-    alert("اشتغلت");
+    alert("اشتغلتj");
 
     cartModal.style.display = "flex";
 
