@@ -121,7 +121,6 @@ h1{
     background:#38392A;
 }
 
-}
 .modal{
     display:none;
     position:fixed;
@@ -183,4 +182,60 @@ h1{
     font-weight:600;
 
 }
-cartSheet.classList.add("show");
+.cart-sheet{
+
+    position:fixed;
+
+    left:0;
+    right:0;
+    bottom:-100%;
+
+    background:#fff;
+
+    border-radius:24px 24px 0 0;
+
+    padding:20px;
+
+    max-height:80vh;
+
+    overflow:auto;
+
+    box-shadow:0 -8px 30px rgba(0,0,0,.18);
+
+    transition:bottom .35s ease;
+
+    z-index:10000;
+
+}
+
+.cart-sheet.show{
+
+    bottom:0;
+
+}
+
+.sheet-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+.sheet-header h2{
+
+    margin:0;
+
+}
+
+#closeCart{
+
+    font-size:30px;
+
+    cursor:pointer;
+
+}
