@@ -2,6 +2,7 @@ const api = "https://script.google.com/macros/s/AKfycbzbj-n1Bew61qx5_8N7PCdvZGQf
 
 let products = [];
 let filtered = [];
+let cart = [];
 
 const productsDiv = document.getElementById("products");
 const search = document.getElementById("search");
@@ -73,7 +74,7 @@ addBtn.addEventListener("click", (e) => {
 
     e.stopPropagation();
 
-    alert("سيتم ربط السلة في الخطوة القادمة");
+    addToCart(product);
 
 });
 productsDiv.appendChild(card);
@@ -159,5 +160,29 @@ function openProduct(product){
     `;
 
     modal.style.display = "block";
+
+}
+
+function addToCart(product){
+
+    const item = cart.find(p => p.ID == product.ID);
+
+    if(item){
+
+        item.qty++;
+
+    }else{
+
+        cart.push({
+
+            ...product,
+
+            qty:1
+
+        });
+
+    }
+
+    console.log(cart);
 
 }
