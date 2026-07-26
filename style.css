@@ -89,30 +89,29 @@ h1{
 
  .add-cart{
 
-    display:block;
+    appearance: none;
+    -webkit-appearance: none;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
     width:72%;
+    height:42px;
 
-    margin:18px auto 18px;
-
-    padding:12px;
+    margin:18px auto;
 
     border:none;
-
     border-radius:30px;
 
-    background:red;
+    background:#454836;
 
-    color:white;
+    color:#fff;
 
     font-size:15px;
-
     font-weight:600;
 
     cursor:pointer;
-
-    transition:.2s;
-
 }
 
 .add-cart:hover{
