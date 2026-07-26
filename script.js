@@ -3,7 +3,11 @@ const api = "https://script.google.com/macros/s/AKfycbzbj-n1Bew61qx5_8N7PCdvZGQf
 let products = [];
 let filtered = [];
 let cart = [];
+let cart = [];
 
+const cartBar = document.getElementById("cartBar");
+const cartCount = document.getElementById("cartCount");
+const cartTotal = document.getElementById("cartTotal");
 const productsDiv = document.getElementById("products");
 const search = document.getElementById("search");
 const category = document.getElementById("category");
@@ -180,7 +184,34 @@ function addToCart(product){
             qty:1
 
         });
+    }
+        updateCartBar()
+    }
+            
+function updateCartBar(){
 
+    if(cart.length === 0){
+
+        cartBar.style.display = "none";
+        return;
+
+    }
+
+    cartBar.style.display = "flex";
+
+    const totalQty = cart.reduce((sum,item)=>sum+item.qty,0);
+
+    const totalPrice = cart.reduce((sum,item)=>{
+
+        return sum + (Number(item["السعر"]) * item.qty);
+
+    },0);
+
+    cartCount.textContent = `🛒 ${totalQty} منتج`;
+
+    cartTotal.textContent = `${totalPrice} ر.س`;
+
+}
     }
 
     console.log(cart);
