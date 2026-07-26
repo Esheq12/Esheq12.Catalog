@@ -222,9 +222,26 @@ cartBar.addEventListener("click", openCart);
 
 function openCart(){
 
-    alert("اشتغلتj");
+    cartBody.innerHTML = "<h2>🛒 السلة</h2>";
+
+    cart.forEach(item=>{
+
+        cartBody.innerHTML += `
+
+        <div class="cart-item">
+
+            <h3>${item["الاسم"]}</h3>
+
+            <div>${item.qty} × ${item["السعر"]} ر.س</div>
+
+        </div>
+
+        <hr>
+
+        `;
+
+    });
 
     cartModal.style.display = "flex";
 
 }
-
