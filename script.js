@@ -3,7 +3,6 @@ const api = "https://script.google.com/macros/s/AKfycbzbj-n1Bew61qx5_8N7PCdvZGQf
 let products = [];
 let filtered = [];
 let cart = [];
-let cart = [];
 
 const cartBar = document.getElementById("cartBar");
 const cartCount = document.getElementById("cartCount");
@@ -185,7 +184,7 @@ function addToCart(product){
 
         });
     }
-        updateCartBar()
+        updateCartBar();
     }
             
 function updateCartBar(){
@@ -210,10 +209,5 @@ function updateCartBar(){
     cartCount.textContent = `🛒 ${totalQty} منتج`;
 
     cartTotal.textContent = `${totalPrice} ر.س`;
-
-}
-    }
-
-    console.log(cart);
 
 }
