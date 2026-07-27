@@ -25,7 +25,13 @@ const cartBody = document.getElementById("cartBody");
 
 document.querySelector(".close").onclick = () => {
 
-    modal.style.display = "none";
+    modal.classList.remove("show");
+
+    setTimeout(()=>{
+
+        modal.style.display = "none";
+
+    },250);
 
 };
 
@@ -287,16 +293,13 @@ function openProduct(product){
     const images = [
 
     product.Image,
-
     product.Image2,
-
     product.Image3,
-
     product.Image4,
-
     product.Image5
 
 ].filter(Boolean);
+    
     modalBody.innerHTML = `
 
         <div class="gallery">
@@ -327,7 +330,7 @@ function openProduct(product){
 
         </h2>
 
-        <div class="price">
+        <div class="product-price">
 
             ${product["السعر"]} ر.س
 
@@ -340,8 +343,7 @@ function openProduct(product){
         </p>
 
         <button
-            class="add-cart"
-            style="margin-top:20px;width:100%;">
+            class="product-add-cart">
 
             🛒 إضافة للسلة
 
@@ -349,21 +351,69 @@ function openProduct(product){
 
     `;
 
-    modalBody
-        .querySelector(".add-cart")
-        .onclick = ()=>{
+   modalBody
+    .querySelector(".product-add-cart")
+    .onclick = ()=>{
 
-            addToCart(product);
+        addToCart(product);
+
+        modal.classList.remove("show");
+
+        setTimeout(()=>{
 
             modal.style.display="none";
 
-        };
-let currentImage = 0;
+        },250);
 
+    };
+let currentImage = 0;
+let startX = 0;
 const galleryImage = document.getElementById("galleryImage");
 
-const dots = modalBody.querySelectorAll(".dot");
 
+  galleryImage.addEventListener("touchstart",(e)=>{
+
+    startX = e.touches[0].clientX;
+
+});
+
+galleryImage.addEventListener("touchend",(e)=>{
+
+    const endX = e.changedTouches[0].clientX;
+
+    const diff = startX - endX;
+
+    if(Math.abs(diff) < 50) return;
+
+    if(diff > 0){
+
+        showImage(
+
+            (currentImage + 1) % images.length
+
+        );
+
+    }else{
+
+        showImage(
+
+            (currentImage - 1 + images.length) % images.length
+
+        );
+
+    }
+
+});  
+const dots = modalBody.querySelectorAll(".dot");
+dots.forEach((dot,index)=>{
+
+    dot.onclick = ()=>{
+
+        showImage(index);
+
+    };
+
+});
 function showImage(index){
 
     currentImage = index;
@@ -403,7 +453,13 @@ modalBody.querySelector(".prev").onclick = ()=>{
     );
 
 };
-    modal.style.display="block";
+    modal.style.display = "flex";
+
+requestAnimationFrame(()=>{
+
+    modal.classList.add("show");
+
+});
 
 }
 
@@ -665,3 +721,4 @@ function clearCart(){
     cartSheet.classList.remove("show");
 
 }
+
