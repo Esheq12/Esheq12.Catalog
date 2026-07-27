@@ -3,16 +3,12 @@
 // =====================================
 
 
-// تفاصيل المنتج
-
-const modal = document.getElementById("productModal");
-const modalBody = document.getElementById("modalBody");
 
 // السلة
 
 
 const cartSheet = document.getElementById("cartSheet");
-const cartBody = document.getElementById("cartBody");
+
 
 // =====================================
 // تحميل البيانات
