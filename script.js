@@ -398,7 +398,51 @@ function openProduct(product){
             modal.style.display="none";
 
         };
+let currentImage = 0;
 
+const galleryImage = document.getElementById("galleryImage");
+
+const dots = modalBody.querySelectorAll(".dot");
+
+function showImage(index){
+
+    currentImage = index;
+
+    galleryImage.src = images[index];
+
+    dots.forEach(dot=>dot.classList.remove("active"));
+
+    dots[index].classList.add("active");
+
+}
+
+if(images.length <= 1){
+
+    modalBody.querySelector(".prev").style.display = "none";
+
+    modalBody.querySelector(".next").style.display = "none";
+
+}
+
+modalBody.querySelector(".next").onclick = ()=>{
+
+    showImage(
+
+        (currentImage + 1) % images.length
+
+    );
+
+};
+
+modalBody.querySelector(".prev").onclick = ()=>{
+
+    showImage(
+
+        (currentImage - 1 + images.length) % images.length
+
+    );
+
+};
     modal.style.display="block";
 
 }
