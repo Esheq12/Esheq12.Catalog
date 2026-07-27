@@ -375,12 +375,13 @@ function updateCartBar(){
 
     if(cart.length === 0){
 
-        cartBar.style.display = "none";
+    cartBar.style.display = "none";
 
-        return;
+    localStorage.removeItem("cart");
 
-    }
+    return;
 
+}
     cartBar.style.display = "flex";
 
     const totalQty = cart.reduce(
@@ -596,10 +597,8 @@ function clearCart(){
 
     cart = [];
 
-    localStorage.removeItem("cart");
-
     updateCartBar();
 
-    openCart();
+    cartSheet.classList.remove("show");
 
 }
