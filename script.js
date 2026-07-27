@@ -324,12 +324,43 @@ sort.addEventListener("change",updateProducts);
 
 function openProduct(product){
 
+    const images = [
+
+    product.Image,
+
+    product.Image2,
+
+    product.Image3,
+
+    product.Image4,
+
+    product.Image5
+
+].filter(Boolean);
     modalBody.innerHTML = `
 
-        <img
-            src="${product.Image}"
-            style="width:100%;border-radius:16px;">
+        <div class="gallery">
 
+    <button class="gallery-btn prev">‹</button>
+
+    <img
+        id="galleryImage"
+        src="${images[0]}"
+        class="gallery-image">
+
+    <button class="gallery-btn next">›</button>
+
+</div>
+
+<div class="gallery-dots">
+
+    ${images.map((_,i)=>`
+
+        <span class="dot ${i===0?"active":""}"></span>
+
+    `).join("")}
+
+</div>
         <h2 style="margin-top:18px;">
 
             ${product["الاسم"]}
