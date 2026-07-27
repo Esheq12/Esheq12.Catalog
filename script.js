@@ -145,11 +145,40 @@ function renderProducts(){
 
             <h3>${product["الاسم"]}</h3>
 
-            <div class="price">
+           <div class="price">
 
-                ${product["السعر"]} ر.س
+${
+product["السعر بعد الخصم"]
 
-            </div>
+?
+
+`
+<span class="old-price">
+
+${product["السعر"]} ر.س
+
+</span>
+
+<span class="new-price">
+
+${product["السعر بعد الخصم"]} ر.س
+
+</span>
+`
+
+:
+
+`
+<span class="new-price">
+
+${product["السعر"]} ر.س
+
+</span>
+`
+
+}
+
+</div>
 
             <button class="add-cart">
 
@@ -295,12 +324,43 @@ sort.addEventListener("change",updateProducts);
 
 function openProduct(product){
 
+    const images = [
+
+    product.Image,
+
+    product.Image2,
+
+    product.Image3,
+
+    product.Image4,
+
+    product.Image5
+
+].filter(Boolean);
     modalBody.innerHTML = `
 
-        <img
-            src="${product.Image}"
-            style="width:100%;border-radius:16px;">
+        <div class="gallery">
 
+    <button class="gallery-btn prev">‹</button>
+
+    <img
+        id="galleryImage"
+        src="${images[0]}"
+        class="gallery-image">
+
+    <button class="gallery-btn next">›</button>
+
+</div>
+
+<div class="gallery-dots">
+
+    ${images.map((_,i)=>`
+
+        <span class="dot ${i===0?"active":""}"></span>
+
+    `).join("")}
+
+</div>
         <h2 style="margin-top:18px;">
 
             ${product["الاسم"]}
@@ -338,7 +398,51 @@ function openProduct(product){
             modal.style.display="none";
 
         };
+let currentImage = 0;
 
+const galleryImage = document.getElementById("galleryImage");
+
+const dots = modalBody.querySelectorAll(".dot");
+
+function showImage(index){
+
+    currentImage = index;
+
+    galleryImage.src = images[index];
+
+    dots.forEach(dot=>dot.classList.remove("active"));
+
+    dots[index].classList.add("active");
+
+}
+
+if(images.length <= 1){
+
+    modalBody.querySelector(".prev").style.display = "none";
+
+    modalBody.querySelector(".next").style.display = "none";
+
+}
+
+modalBody.querySelector(".next").onclick = ()=>{
+
+    showImage(
+
+        (currentImage + 1) % images.length
+
+    );
+
+};
+
+modalBody.querySelector(".prev").onclick = ()=>{
+
+    showImage(
+
+        (currentImage - 1 + images.length) % images.length
+
+    );
+
+};
     modal.style.display="block";
 
 }

@@ -411,3 +411,111 @@ h1{
     cursor:pointer;
 
 }
+.old-price{
+
+    display:block;
+
+    color:#9b9b9b;
+
+    text-decoration:line-through;
+
+    font-size:14px;
+
+    margin-bottom:4px;
+
+}
+
+.new-price{
+
+    color:#454836;
+
+    font-size:21px;
+
+    font-weight:bold;
+
+}
+.gallery{
+
+    position:relative;
+
+}
+
+.gallery-image{
+
+    width:100%;
+
+    border-radius:16px;
+
+    aspect-ratio:1/1;
+
+    object-fit:cover;
+
+}
+
+.gallery-btn{
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:38px;
+
+    height:38px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.85);
+
+    cursor:pointer;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+}
+
+.gallery .prev{
+
+    right:10px;
+
+}
+
+.gallery .next{
+
+    left:10px;
+
+}
+
+.gallery-dots{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:8px;
+
+    margin-top:12px;
+
+}
+
+.dot{
+
+    width:9px;
+
+    height:9px;
+
+    border-radius:50%;
+
+    background:#d5d5d5;
+
+}
+
+.dot.active{
+
+    background:#454836;
+
+}
