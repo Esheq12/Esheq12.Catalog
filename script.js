@@ -9,19 +9,12 @@ const api =
 // البيانات
 // =====================================
 
-let products = [];
-let filtered = [];
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 // =====================================
 // عناصر الصفحة
 // =====================================
 
-const productsDiv = document.getElementById("products");
 
-const search = document.getElementById("search");
-const category = document.getElementById("category");
-const sort = document.getElementById("sort");
 
 // تفاصيل المنتج
 
@@ -30,9 +23,6 @@ const modalBody = document.getElementById("modalBody");
 
 // السلة
 
-const cartBar = document.getElementById("cartBar");
-const cartCount = document.getElementById("cartCount");
-const cartTotal = document.getElementById("cartTotal");
 
 const cartSheet = document.getElementById("cartSheet");
 const cartBody = document.getElementById("cartBody");
