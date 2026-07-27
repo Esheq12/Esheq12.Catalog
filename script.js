@@ -427,31 +427,39 @@ function openCart(){
 
     }else{
 
-        cart.forEach(item=>{
+       cart.forEach(item=>{
 
-            cartBody.innerHTML += `
+    cartBody.innerHTML += `
 
-                <div class="cart-item">
+        <div class="cart-item">
 
-                    <h3>
+            <img src="${item.Image}" class="cart-image">
 
-                        ${item["الاسم"]}
+            <div class="cart-info">
 
-                    </h3>
+                <h3>${item["الاسم"]}</h3>
 
-                    <div>
+                <div class="cart-price">
 
-                        ${item.qty} × ${item["السعر"]} ر.س
-
-                    </div>
+                    ${item["السعر"]} ر.س
 
                 </div>
 
-                <hr>
+                <div class="cart-qty">
 
-            `;
+                    الكمية: ${item.qty}
 
-        });
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+    `;
+
+});
 
     }
 
