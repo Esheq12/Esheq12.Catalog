@@ -65,7 +65,13 @@ fetch(api)
 
 document.querySelector(".close").onclick = () => {
 
-    modal.style.display = "none";
+    modal.classList.remove("show");
+
+    setTimeout(()=>{
+
+        modal.style.display = "none";
+
+    },250);
 
 };
 
@@ -482,7 +488,13 @@ modalBody.querySelector(".prev").onclick = ()=>{
     );
 
 };
-    modal.style.display="block";
+    modal.style.display = "flex";
+
+requestAnimationFrame(()=>{
+
+    modal.classList.add("show");
+
+});
 
 }
 
