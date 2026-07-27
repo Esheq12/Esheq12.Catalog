@@ -445,12 +445,15 @@ function openCart(){
 
                 </div>
 
-                <div class="cart-qty">
+                <div class="cart-controls">
 
-                    الكمية: ${item.qty}
+    <button onclick="changeQty('${item.ID}',-1)">−</button>
 
-                </div>
+    <span>${item.qty}</span>
 
+    <button onclick="changeQty('${item.ID}',1)">+</button>
+
+</div>
             </div>
 
         </div>
@@ -466,7 +469,25 @@ function openCart(){
     cartSheet.classList.add("show");
 
 }
+function changeQty(id,change){
 
+    const item = cart.find(p => p.ID == id);
+
+    if(!item) return;
+
+    item.qty += change;
+
+    if(item.qty <= 0){
+
+        cart = cart.filter(p => p.ID != id);
+
+    }
+
+    updateCartBar();
+
+    openCart();
+
+}
 // =====================================
 // Events
 // =====================================
