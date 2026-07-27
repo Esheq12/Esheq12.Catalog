@@ -383,8 +383,7 @@ function openProduct(product){
         </p>
 
         <button
-            class="add-cart"
-            style="margin-top:20px;width:100%;">
+            class="product-add-cart">
 
             🛒 إضافة للسلة
 
