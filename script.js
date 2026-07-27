@@ -364,7 +364,7 @@ function openProduct(product){
 
         </h2>
 
-        <div class="price">
+        <div class="product-price">
 
             ${product["السعر"]} ر.س
 
