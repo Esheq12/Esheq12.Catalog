@@ -465,7 +465,33 @@ function openCart(){
 });
 
     }
+const total = cart.reduce((sum,item)=>{
 
+    return sum + Number(item["السعر"]) * item.qty;
+
+},0);
+
+cartBody.innerHTML += `
+
+    <div class="cart-footer">
+
+        <div class="cart-total">
+
+            الإجمالي
+
+            <span>${total} ر.س</span>
+
+        </div>
+
+        <button class="checkout-btn">
+
+            📲 إرسال الطلب عبر واتساب
+
+        </button>
+
+    </div>
+
+`;
     cartSheet.classList.add("show");
 
 }
