@@ -145,11 +145,40 @@ function renderProducts(){
 
             <h3>${product["الاسم"]}</h3>
 
-            <div class="price">
+           <div class="price">
 
-                ${product["السعر"]} ر.س
+${
+product["السعر بعد الخصم"]
 
-            </div>
+?
+
+`
+<span class="old-price">
+
+${product["السعر"]} ر.س
+
+</span>
+
+<span class="new-price">
+
+${product["السعر بعد الخصم"]} ر.س
+
+</span>
+`
+
+:
+
+`
+<span class="new-price">
+
+${product["السعر"]} ر.س
+
+</span>
+`
+
+}
+
+</div>
 
             <button class="add-cart">
 
