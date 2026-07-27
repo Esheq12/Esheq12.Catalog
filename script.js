@@ -11,7 +11,7 @@ const api =
 
 let products = [];
 let filtered = [];
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 // =====================================
 // عناصر الصفحة
@@ -54,6 +54,8 @@ fetch(api)
     loadCategories();
 
     renderProducts();
+
+    updateCartBar();
 
 });
 
@@ -403,6 +405,8 @@ function updateCartBar(){
 
     cartTotal.textContent = `${totalPrice} ر.س`;
 
+    localStorage.setItem("cart", JSON.stringify(cart));
+
 }
 
 // =====================================
@@ -483,11 +487,21 @@ cartBody.innerHTML += `
 
         </div>
 
-        <button class="checkout-btn" onclick="sendWhatsApp()">
+       <div class="cart-buttons">
 
- إرسال الطلب عبر واتساب
+    <button class="clear-btn" onclick="clearCart()">
 
-</button>
+        🗑 إفراغ السلة
+
+    </button>
+
+    <button class="checkout-btn" onclick="sendWhatsApp()">
+
+         إرسال الطلب عبر واتساب
+
+    </button>
+
+</div>
     </div>
 
 `;
@@ -574,5 +588,18 @@ function sendWhatsApp(){
         "_blank"
 
     );
+
+}
+function clearCart(){
+
+    if(!confirm("هل تريد إفراغ السلة؟")) return;
+
+    cart = [];
+
+    localStorage.removeItem("cart");
+
+    updateCartBar();
+
+    openCart();
 
 }
