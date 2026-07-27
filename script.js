@@ -36,7 +36,9 @@ const cartTotal = document.getElementById("cartTotal");
 
 const cartSheet = document.getElementById("cartSheet");
 const cartBody = document.getElementById("cartBody");
-
+const imageViewer = document.getElementById("imageViewer");
+const viewerImage = document.getElementById("viewerImage");
+const closeViewer = document.getElementById("closeViewer");
 // =====================================
 // تحميل البيانات
 // =====================================
@@ -327,16 +329,13 @@ function openProduct(product){
     const images = [
 
     product.Image,
-
     product.Image2,
-
     product.Image3,
-
     product.Image4,
-
     product.Image5
 
 ].filter(Boolean);
+    
     modalBody.innerHTML = `
 
         <div class="gallery">
@@ -401,7 +400,13 @@ function openProduct(product){
 let currentImage = 0;
 
 const galleryImage = document.getElementById("galleryImage");
+galleryImage.onclick = ()=>{
 
+    viewerImage.src = galleryImage.src;
+
+    imageViewer.style.display = "flex";
+
+};
 const dots = modalBody.querySelectorAll(".dot");
 
 function showImage(index){
@@ -705,3 +710,18 @@ function clearCart(){
     cartSheet.classList.remove("show");
 
 }
+closeViewer.onclick = ()=>{
+
+    imageViewer.style.display = "none";
+
+};
+
+imageViewer.onclick = (e)=>{
+
+    if(e.target === imageViewer){
+
+        imageViewer.style.display = "none";
+
+    }
+
+};
