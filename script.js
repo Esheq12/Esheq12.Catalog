@@ -391,15 +391,21 @@ function openProduct(product){
 
     `;
 
-    modalBody
-        .querySelector(".add-cart")
-        .onclick = ()=>{
+   modalBody
+    .querySelector(".product-add-cart")
+    .onclick = ()=>{
 
-            addToCart(product);
+        addToCart(product);
+
+        modal.classList.remove("show");
+
+        setTimeout(()=>{
 
             modal.style.display="none";
 
-        };
+        },250);
+
+    };
 let currentImage = 0;
 let startX = 0;
 const galleryImage = document.getElementById("galleryImage");
