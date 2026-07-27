@@ -483,12 +483,11 @@ cartBody.innerHTML += `
 
         </div>
 
-        <button class="checkout-btn">
+        <button class="checkout-btn" onclick="sendWhatsApp()">
 
-            📲 إرسال الطلب عبر واتساب
+ إرسال الطلب عبر واتساب
 
-        </button>
-
+</button>
     </div>
 
 `;
@@ -545,3 +544,35 @@ window.addEventListener("click",(e)=>{
     }
 
 });
+function sendWhatsApp(){
+
+    let message = "السلام عليكم 🌿%0A%0A";
+    message += "أرغب بطلب:%0A%0A";
+
+    cart.forEach(item=>{
+
+        message += `• ${item["الاسم"]}%0A`;
+        message += `الكمية: ${item.qty}%0A`;
+        message += `السعر: ${item["السعر"]} ر.س%0A%0A`;
+
+    });
+
+    const total = cart.reduce((sum,item)=>{
+
+        return sum + Number(item["السعر"]) * item.qty;
+
+    },0);
+
+    message += `الإجمالي: ${total} ر.س`;
+
+    const phone = "966564489896";
+
+    window.open(
+
+        `https://wa.me/${phone}?text=${message}`,
+
+        "_blank"
+
+    );
+
+}
