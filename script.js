@@ -398,7 +398,7 @@ function openProduct(product){
 
         };
 let currentImage = 0;
-
+let startX = 0;
 const galleryImage = document.getElementById("galleryImage");
 galleryImage.onclick = ()=>{
 
@@ -407,8 +407,50 @@ galleryImage.onclick = ()=>{
     imageViewer.style.display = "flex";
 
 };
-const dots = modalBody.querySelectorAll(".dot");
 
+  galleryImage.addEventListener("touchstart",(e)=>{
+
+    startX = e.touches[0].clientX;
+
+});
+
+galleryImage.addEventListener("touchend",(e)=>{
+
+    const endX = e.changedTouches[0].clientX;
+
+    const diff = startX - endX;
+
+    if(Math.abs(diff) < 50) return;
+
+    if(diff > 0){
+
+        showImage(
+
+            (currentImage + 1) % images.length
+
+        );
+
+    }else{
+
+        showImage(
+
+            (currentImage - 1 + images.length) % images.length
+
+        );
+
+    }
+
+});  
+const dots = modalBody.querySelectorAll(".dot");
+dots.forEach((dot,index)=>{
+
+    dot.onclick = ()=>{
+
+        showImage(index);
+
+    };
+
+});
 function showImage(index){
 
     currentImage = index;
