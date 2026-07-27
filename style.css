@@ -290,3 +290,44 @@ h1{
     font-size:14px;
 
 }
+.cart-controls{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-top:10px;
+
+}
+
+.cart-controls button{
+
+    width:34px;
+
+    height:34px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#454836;
+
+    color:#fff;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+}
+
+.cart-controls span{
+
+    font-weight:bold;
+
+    min-width:20px;
+
+    text-align:center;
+
+}
