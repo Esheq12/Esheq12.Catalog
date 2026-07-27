@@ -587,7 +587,6 @@ function sendWhatsApp(){
         `https://wa.me/${phone}?text=${message}`,
 
         "_blank"
-
     );
 
 }
