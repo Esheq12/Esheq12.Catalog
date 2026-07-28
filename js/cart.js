@@ -1,3 +1,5 @@
+const cartSheet = document.getElementById("cartSheet");
+
 function addToCart(product){
 
     const item = cart.find(p => p.ID == product.ID);
