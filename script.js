@@ -2,49 +2,10 @@
 // الإعدادات
 // =====================================
 
-const api =
-"https://script.google.com/macros/s/AKfycbzbj-n1Bew61qx5_8N7PCdvZGQf8PKjbIEDqhMRphK5kLyctGz3iIhWa_oN7wG_QG0BaQ/exec";
-
-// =====================================
-// البيانات
-// =====================================
-
-let products = [];
-let filtered = [];
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-// =====================================
-// عناصر الصفحة
-// =====================================
-
-const productsDiv = document.getElementById("products");
-
-const search = document.getElementById("search");
-const category = document.getElementById("category");
-const sort = document.getElementById("sort");
-
-// تفاصيل المنتج
-
-const modal = document.getElementById("productModal");
-const modalBody = document.getElementById("modalBody");
-
-// السلة
-
-const cartBar = document.getElementById("cartBar");
-const cartCount = document.getElementById("cartCount");
-const cartTotal = document.getElementById("cartTotal");
-
-const cartSheet = document.getElementById("cartSheet");
-const cartBody = document.getElementById("cartBody");
-
-// =====================================
-// تحميل البيانات
-// =====================================
+const api = "https://script.google.com/macros/s/AKfycbzbj-n1Bew61qx5_8N7PCdvZGQf8PKjbIEDqhMRphK5kLyctGz3iIhWa_oN7wG_QG0BaQ/exec";
 
 fetch(api)
-
 .then(res => res.json())
-
 .then(data => {
 
     products = data.filter(p => p.Status === "متوفر");
@@ -58,6 +19,17 @@ fetch(api)
     updateCartBar();
 
 });
+
+// السلة
+
+
+const cartSheet = document.getElementById("cartSheet");
+
+
+// =====================================
+// تحميل البيانات
+// =====================================
+
 
 // =====================================
 // إغلاق النوافذ
