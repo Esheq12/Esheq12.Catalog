@@ -172,3 +172,15 @@ requestAnimationFrame(()=>{
 });
 
 }
+// اغلاق النافذة//
+document.querySelector(".close").onclick = () => {
+
+    modal.classList.remove("show");
+
+    setTimeout(()=>{
+
+        modal.style.display = "none";
+
+    },250);
+
+};
