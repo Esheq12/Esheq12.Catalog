@@ -10,9 +10,9 @@ function openProduct(product){
 
 ].filter(Boolean);
     
-    modalBody.innerHTML = `
+   modalBody.innerHTML = `
 
-        <div class="gallery">
+<div class="gallery">
 
     <button class="gallery-btn prev">‹</button>
 
@@ -27,55 +27,119 @@ function openProduct(product){
 
 <div class="gallery-dots">
 
-    ${images.map((_,i)=>`
+${images.map((_,i)=>`
 
-        <span class="dot ${i===0?"active":""}"></span>
+<span class="dot ${i===0?"active":""}"></span>
 
-    `).join("")}
+`).join("")}
 
 </div>
-        <h2 style="margin-top:18px;">
 
-            ${product["الاسم"]}
+<h2 style="margin-top:18px;">
+${product["الاسم"]}
+</h2>
 
-        </h2>
+<div class="product-price">
+${product["السعر"]} ر.س
+</div>
 
-        <div class="product-price">
+${
+product["الألوان"]
+?
+`
+<div class="product-options">
 
-            ${product["السعر"]} ر.س
+<label>اللون</label>
 
-        </div>
+<select id="productColor">
 
-        <p style="margin-top:16px;line-height:1.8;">
+<option value="">اختر اللون</option>
 
-            ${product["الوصف"] || "لا يوجد وصف"}
+${product["الألوان"]
+.split(",")
+.map(color=>`
+<option value="${color.trim()}">
+${color.trim()}
+</option>
+`).join("")}
 
-        </p>
+</select>
 
-        <button
-            class="product-add-cart">
+</div>
+`
+:
+""
+}
 
-            🛒 إضافة للسلة
+${
+product["المقاسات"]
+?
+`
+<div class="product-options">
 
-        </button>
+<label>المقاس</label>
 
-    `;
+<select id="productSize">
 
-   modalBody
-    .querySelector(".product-add-cart")
-    .onclick = ()=>{
+<option value="">اختر المقاس</option>
 
-        addToCart(product);
+${product["المقاسات"]
+.split(",")
+.map(size=>`
+<option value="${size.trim()}">
+${size.trim()}
+</option>
+`).join("")}
 
-        modal.classList.remove("show");
+</select>
 
-        setTimeout(()=>{
+</div>
+`
+:
+""
+}
 
-            modal.style.display="none";
+<p style="margin-top:16px;line-height:1.8;">
+${product["الوصف"] || "لا يوجد وصف"}
+</p>
 
-        },250);
+<button class="product-add-cart">
+🛒 إضافة للسلة
+</button>
 
-    };
+`;
+
+  modalBody.querySelector(".product-add-cart").onclick = ()=>{
+
+    const colorSelect = document.getElementById("productColor");
+    const sizeSelect = document.getElementById("productSize");
+    const selectedColor = colorSelect ? colorSelect.value : "";
+    const selectedSize = sizeSelect ? sizeSelect.value : "";
+
+    if(colorSelect && !selectedColor){
+
+        alert("اختر اللون");
+
+        return;
+    }
+
+    if(sizeSelect && !selectedSize){
+
+        alert("اختر المقاس");
+
+        return;
+    }
+    addToCart(product, selectedColor, selectedSize);
+
+    modal.classList.remove("show");
+
+    setTimeout(()=>{
+
+        modal.style.display="none";
+
+    },250);
+};
+    
 let currentImage = 0;
 let startX = 0;
 const galleryImage = document.getElementById("galleryImage");
