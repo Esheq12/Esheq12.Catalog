@@ -1,8 +1,14 @@
 const cartSheet = document.getElementById("cartSheet");
 
-function addToCart(product){
+function addToCart(product, color = "", size = ""){
 
-    const item = cart.find(p => p.ID == product.ID);
+    const item = cart.find(p =>
+
+        p.ID == product.ID &&
+        p.selectedColor == color &&
+        p.selectedSize == size
+
+    );
 
     if(item){
 
@@ -11,9 +17,17 @@ function addToCart(product){
     }else{
 
         cart.push({
+
             ...product,
-            qty:1
+
+            qty: 1,
+
+            selectedColor: color,
+
+            selectedSize: size
+
         });
+
     }
 
     updateCartBar();
