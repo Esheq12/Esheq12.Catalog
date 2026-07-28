@@ -11,13 +11,9 @@ function addToCart(product){
     }else{
 
         cart.push({
-
             ...product,
-
             qty:1
-
         });
-
     }
 
     updateCartBar();
@@ -33,26 +29,19 @@ function updateCartBar(){
     localStorage.removeItem("cart");
 
     return;
-
 }
     cartBar.style.display = "flex";
 
     const totalQty = cart.reduce(
 
         (sum,item)=>sum + item.qty,
-
         0
-
     );
 
     const totalPrice = cart.reduce(
-
         (sum,item)=>
-
             sum + Number(item["السعر"]) * item.qty,
-
         0
-
     );
 
     cartCount.textContent = `🛒 ${totalQty} منتج`;
@@ -60,7 +49,6 @@ function updateCartBar(){
     cartTotal.textContent = `${totalPrice} ر.س`;
 
     localStorage.setItem("cart", JSON.stringify(cart));
-
 }
 
 // =====================================
@@ -76,13 +64,9 @@ function openCart(){
         cartBody.innerHTML = `
 
             <p style="text-align:center;padding:30px">
-
                 السلة فارغة 🌿
-
             </p>
-
         `;
-
     }else{
 
        cart.forEach(item=>{
@@ -113,15 +97,10 @@ function openCart(){
 
 </div>
             </div>
-
         </div>
-
         <hr>
-
     `;
-
 });
-
     }
 const total = cart.reduce((sum,item)=>{
 
