@@ -24,6 +24,8 @@ const cartBody = document.getElementById("cartBody");
 
 const cartBar = document.getElementById("cartBar");
 
+loadProducts();
+
 const cartCount = document.getElementById("cartCount");
 
 const cartTotal = document.getElementById("cartTotal");
