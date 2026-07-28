@@ -125,3 +125,79 @@ function renderProducts(){
     });
 
 }
+function updateProducts(){
+
+    filtered = [...products];
+
+    if(search.value){
+
+        const keyword = search.value.toLowerCase();
+
+        filtered = filtered.filter(product=>
+
+            product["الاسم"]
+            .toLowerCase()
+            .includes(keyword)
+
+        );
+
+    }
+
+    if(category.value){
+
+        filtered = filtered.filter(product=>
+
+            (product["الأقسام"] || "")
+            .split(",")
+            .map(cat=>cat.trim())
+            .includes(category.value)
+
+        );
+
+    }
+
+    switch(sort.value){
+
+        case "name":
+
+            filtered.sort((a,b)=>
+
+                a["الاسم"].localeCompare(b["الاسم"],"ar")
+
+            );
+
+        break;
+
+        case "low":
+
+            filtered.sort((a,b)=>
+
+                Number(a["السعر"])-
+                Number(b["السعر"])
+
+            );
+
+        break;
+
+        case "high":
+
+            filtered.sort((a,b)=>
+
+                Number(b["السعر"])-
+                Number(a["السعر"])
+
+            );
+
+        break;
+
+    }
+
+    renderProducts();
+
+}
+
+search.addEventListener("input",updateProducts);
+
+category.addEventListener("change",updateProducts);
+
+sort.addEventListener("change",updateProducts);
