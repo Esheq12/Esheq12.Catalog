@@ -44,26 +44,33 @@ ${product["السعر"]} ر.س
 </div>
 
 ${
+${
 product["الألوان"]
 ?
 `
 <div class="product-options">
 
-<label>اللون</label>
+<div class="option-title">
+ اختر اللون
+</div>
 
-<select id="productColor">
-
-<option value="">اختر اللون</option>
+<div class="color-options">
 
 ${product["الألوان"]
 .split(",")
 .map(color=>`
-<option value="${color.trim()}">
+
+<div
+class="color-chip"
+data-color="${color.trim()}">
+
 ${color.trim()}
-</option>
+
+</div>
+
 `).join("")}
 
-</select>
+</div>
 
 </div>
 `
@@ -77,21 +84,27 @@ product["المقاسات"]
 `
 <div class="product-options">
 
-<label>المقاس</label>
+<div class="option-title">
+ اختر المقاس
+</div>
 
-<select id="productSize">
-
-<option value="">اختر المقاس</option>
+<div class="size-options">
 
 ${product["المقاسات"]
 .split(",")
 .map(size=>`
-<option value="${size.trim()}">
+
+<div
+class="size-chip"
+data-size="${size.trim()}">
+
 ${size.trim()}
-</option>
+
+</div>
+
 `).join("")}
 
-</select>
+</div>
 
 </div>
 `
