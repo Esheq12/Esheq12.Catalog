@@ -42,8 +42,6 @@ ${product["الاسم"]}
 <div class="product-price">
 ${product["السعر"]} ر.س
 </div>
-
-${
 ${
 product["الألوان"]
 ?
