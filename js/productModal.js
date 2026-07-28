@@ -40,7 +40,30 @@ ${product["الاسم"]}
 </h2>
 
 <div class="product-price">
+
+${
+product["السعر بعد الخصم"]
+
+?
+`
+<div class="old-price">
+
 ${product["السعر"]} ر.س
+</div>
+<div class="new-price">
+
+${product["السعر بعد الخصم"]} ر.س
+
+</div>
+`
+:
+`
+<div class="new-price">
+${product["السعر"]} ر.س
+
+</div>
+`
+}
 </div>
 ${
 product["الألوان"]
