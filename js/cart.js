@@ -260,3 +260,9 @@ function clearCart(){
     cartSheet.classList.remove("show");
 
 }
+// اغلاق النافذة//
+document.getElementById("closeCart").onclick = () => {
+
+    cartSheet.classList.remove("show");
+
+};
