@@ -121,7 +121,40 @@ ${product["الوصف"] || "لا يوجد وصف"}
 </button>
 
 `;
+let selectedColor = "";
+let selectedSize = "";
 
+// اختيار اللون
+modalBody.querySelectorAll(".color-chip").forEach(chip=>{
+
+    chip.onclick = ()=>{
+
+        modalBody.querySelectorAll(".color-chip")
+        .forEach(c=>c.classList.remove("active"));
+
+        chip.classList.add("active");
+
+        selectedColor = chip.dataset.color;
+
+    };
+
+});
+
+// اختيار المقاس
+modalBody.querySelectorAll(".size-chip").forEach(chip=>{
+
+    chip.onclick = ()=>{
+
+        modalBody.querySelectorAll(".size-chip")
+        .forEach(c=>c.classList.remove("active"));
+
+        chip.classList.add("active");
+
+        selectedSize = chip.dataset.size;
+
+    };
+
+});
   modalBody.querySelector(".product-add-cart").onclick = ()=>{
 
     const colorSelect = document.getElementById("productColor");
@@ -142,7 +175,23 @@ ${product["الوصف"] || "لا يوجد وصف"}
 
         return;
     }
-    addToCart(product, selectedColor, selectedSize);
+    if(product["الألوان"] && !selectedColor){
+
+    alert("اختر اللون أولاً");
+
+    return;
+
+}
+
+if(product["المقاسات"] && !selectedSize){
+
+    alert("اختر المقاس أولاً");
+
+    return;
+
+}
+
+addToCart(product, selectedColor, selectedSize);
 
     modal.classList.remove("show");
 
