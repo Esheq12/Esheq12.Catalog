@@ -273,13 +273,23 @@ dots.forEach((dot,index)=>{
 });
 function showImage(index){
 
-    currentImage = index;
+    if(index === currentImage) return;
 
-    galleryImage.src = images[index];
+    galleryImage.classList.add("fade");
 
-    dots.forEach(dot=>dot.classList.remove("active"));
+    setTimeout(()=>{
 
-    dots[index].classList.add("active");
+        currentImage = index;
+
+        galleryImage.src = images[index];
+
+        dots.forEach(dot=>dot.classList.remove("active"));
+
+        dots[index].classList.add("active");
+
+        galleryImage.classList.remove("fade");
+
+    },180);
 
 }
 
