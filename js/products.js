@@ -221,18 +221,129 @@ function updateProducts(){
 
 let searchTimer;
 
+const suggestions = document.getElementById("searchSuggestions");
+
+function updateSuggestions(){
+
+    const keyword = normalizeArabic(search.value.trim());
+
+    if(!keyword){
+
+        suggestions.style.display = "none";
+
+        suggestions.innerHTML = "";
+
+        return;
+
+    }
+
+    const results = products.filter(product=>{
+
+        const name = normalizeArabic(product["الاسم"]);
+
+        const desc = normalizeArabic(product["الوصف"]);
+
+        const cats = normalizeArabic(product["الأقسام"]);
+
+        return (
+
+            name.includes(keyword) ||
+
+            desc.includes(keyword) ||
+
+            cats.includes(keyword)
+
+        );
+
+    }).slice(0,5);
+
+    if(results.length===0){
+
+        suggestions.style.display="none";
+
+        suggestions.innerHTML="";
+
+        return;
+
+    }
+
+    suggestions.innerHTML = results.map(product=>`
+
+        <div class="search-item" data-id="${product.ID}">
+
+            <img src="${product.Image}">
+
+            <div class="search-info">
+
+                <div class="search-name">
+
+                    ${product["الاسم"]}
+
+                </div>
+
+                <div class="search-price">
+
+                    ${
+                        product["السعر بعد الخصم"]
+                        ?
+                        product["السعر بعد الخصم"]
+                        :
+                        product["السعر"]
+                    } ر.س
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `).join("");
+
+    suggestions.style.display="block";
+
+    suggestions.querySelectorAll(".search-item").forEach(item=>{
+
+        item.onclick = ()=>{
+
+            const product = products.find(
+
+                p=>String(p.ID)===item.dataset.id
+
+            );
+
+            if(product){
+
+                suggestions.style.display="none";
+
+                search.value="";
+
+                openProduct(product);
+            }
+        };
+    });
+}
+
 search.addEventListener("input",()=>{
 
     clearTimeout(searchTimer);
 
     searchTimer = setTimeout(()=>{
 
-        updateProducts();
+    updateProducts();
 
-    },250);
+    updateSuggestions();
 
+},250);
 });
 
 category.addEventListener("change",updateProducts);
 
 sort.addEventListener("change",updateProducts);
+
+document.addEventListener("click",(e)=>{
+
+    if(!e.target.closest(".search-wrapper")){
+
+        suggestions.style.display="none";
+    }
+});
