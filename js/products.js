@@ -219,7 +219,19 @@ function updateProducts(){
 
 }
 
-search.addEventListener("input",updateProducts);
+let searchTimer;
+
+search.addEventListener("input",()=>{
+
+    clearTimeout(searchTimer);
+
+    searchTimer = setTimeout(()=>{
+
+        updateProducts();
+
+    },250);
+
+});
 
 category.addEventListener("change",updateProducts);
 
