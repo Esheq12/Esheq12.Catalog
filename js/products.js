@@ -112,14 +112,21 @@ function renderProducts(){
 
         const addBtn = card.querySelector(".add-cart");
 
-        addBtn.addEventListener("click",(e)=>{
+addBtn.addEventListener("click",(e)=>{
 
-            e.stopPropagation();
+    e.stopPropagation();
 
-            addToCart(product);
+    if(product["الألوان"] || product["المقاسات"]){
 
-        });
+        openProduct(product);
 
+    }else{
+
+        addToCart(product);
+
+    }
+
+});
         productsDiv.appendChild(card);
 
     });
