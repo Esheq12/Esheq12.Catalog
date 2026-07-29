@@ -58,7 +58,11 @@ function renderProducts(){
 
         card.innerHTML = `
 
-            <img src="${product.Image}" alt="${product["الاسم"]}">
+            <img
+    data-src="${product.Image}"
+    src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+    alt="${product["الاسم"]}"
+    class="lazy-image">
 
             <h3>${product["الاسم"]}</h3>
 
@@ -130,7 +134,7 @@ addBtn.addEventListener("click",(e)=>{
         productsDiv.appendChild(card);
 
     });
-
+lazyLoadImages();
 }
 function normalizeArabic(text){
 
@@ -354,3 +358,30 @@ document.addEventListener("click",(e)=>{
         suggestions.style.display="none";
     }
 });
+
+function lazyLoadImages(){
+
+    const images = document.querySelectorAll(".lazy-image");
+
+    const observer = new IntersectionObserver(entries=>{
+
+        entries.forEach(entry=>{
+
+            if(entry.isIntersecting){
+
+                const img = entry.target;
+
+                img.src = img.dataset.src;
+
+                img.onload = ()=>{
+
+                    img.classList.add("loaded");
+                };
+                observer.unobserve(img);
+            }
+        });
+    },{
+        rootMargin:"150px"
+    });
+    images.forEach(img=>observer.observe(img));
+}
