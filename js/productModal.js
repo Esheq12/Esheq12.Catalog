@@ -178,24 +178,6 @@ modalBody.querySelectorAll(".size-chip").forEach(chip=>{
 });
   modalBody.querySelector(".product-add-cart").onclick = ()=>{
 
-    const colorSelect = document.getElementById("productColor");
-    const sizeSelect = document.getElementById("productSize");
-    const selectedColor = colorSelect ? colorSelect.value : "";
-    const selectedSize = sizeSelect ? sizeSelect.value : "";
-
-    if(colorSelect && !selectedColor){
-
-        alert("اختر اللون");
-
-        return;
-    }
-
-    if(sizeSelect && !selectedSize){
-
-        alert("اختر المقاس");
-
-        return;
-    }
     if(product["الألوان"] && !selectedColor){
 
     alert("اختر اللون أولاً");
