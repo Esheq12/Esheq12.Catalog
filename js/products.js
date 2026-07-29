@@ -125,23 +125,46 @@ function renderProducts(){
     });
 
 }
+function normalizeArabic(text){
+
+    return (text || "")
+        .toLowerCase()
+        .replace(/[أإآ]/g,"ا")
+        .replace(/ة/g,"ه")
+        .replace(/ى/g,"ي")
+        .replace(/ؤ/g,"و")
+        .replace(/ئ/g,"ي");
+
+}
 function updateProducts(){
 
     filtered = [...products];
 
-    if(search.value){
+   if(search.value){
 
-        const keyword = search.value.toLowerCase();
+    const keyword = normalizeArabic(search.value.trim());
 
-        filtered = filtered.filter(product=>
+    filtered = filtered.filter(product =>{
 
-            product["الاسم"]
-            .toLowerCase()
-            .includes(keyword)
+        const name = normalizeArabic(product["الاسم"]);
+
+        const desc = normalizeArabic(product["الوصف"]);
+
+        const cats = normalizeArabic(product["الأقسام"]);
+
+        return (
+
+            name.includes(keyword) ||
+
+            desc.includes(keyword) ||
+
+            cats.includes(keyword)
 
         );
 
-    }
+    });
+
+}
 
     if(category.value){
 
