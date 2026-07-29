@@ -228,29 +228,35 @@ window.addEventListener("click",(e)=>{
 });
 function sendWhatsApp(){
 
-    let message = "السلام عليكم 🌿%0A%0A";
-    message += "أرغب بطلب:%0A%0A";
-
+    let message = "السلام عليكم ، أرغب بطلب:%0A%0A";
     cart.forEach(item=>{
 
     const price = item["السعر بعد الخصم"] || item["السعر"];
 
-    message += ` ${item["الاسم"]}%0A`;
+    message += `${item["الاسم"]}%0A`;
 
     if(item.selectedColor){
 
         message += `اللون: ${item.selectedColor}%0A`;
-    }
-    if(item.selectedSize){
-        message += ` المقاس: ${item.selectedSize}%0A`;
-    }
-    message += `الكمية: ${item.qty}%0A`;
-    message += `السعر: ${price} ر.س%0A`;
-    if(item.Image){
-        message += ` صورة المنتج:%0A${item.Image}%0A`;
+
     }
 
-    message += `%0A────────────%0A%0A`;
+    if(item.selectedSize){
+
+        message += `المقاس: ${item.selectedSize}%0A`;
+
+    }
+
+    message += `الكمية: ${item.qty}%0A`;
+    message += `السعر: ${price} ر.س%0A`;
+
+    if(item.Image){
+
+        message += `صورة المنتج:%0A${item.Image}%0A`;
+
+    }
+
+    message += `────────────%0A`;
 
 });
     const total = cart.reduce((sum,item)=>{
