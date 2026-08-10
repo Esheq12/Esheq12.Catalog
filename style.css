@@ -417,7 +417,7 @@ h1{
 
     padding:15px;
 
-    background:#25D366;
+    background:#541010;
 
     color:#fff;
 
@@ -497,11 +497,15 @@ h1{
     border-radius:16px;
 
     aspect-ratio:1/1;
-
+    transition: opacity .18s ease;
     object-fit:cover;
 
 }
+.gallery-image.fade{
 
+    opacity:0;
+
+}
 .gallery-btn{
 
     position:absolute;
@@ -609,43 +613,326 @@ h1{
     cursor:pointer;
 
 }
+/* ============================= */
+/* Product Options */
+/* ============================= */
+
+.product-options{
+    margin-top:18px;
+}
+
+.option-title{
+    font-size:15px;
+    font-weight:600;
+    margin-bottom:10px;
+    color:#444;
+}
+
+.color-options,
+.size-options{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.color-chip{
+    width:46px;
+    height:46px;
+    min-width:46px;
+    border-radius:50%;
+    padding:0;
+    border:2px solid #ddd;
+   // border-radius:999px;//
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:0;
+    cursor:pointer;
+
+    background:#fff;
+
+    transition:.25s;
+
+  //  font-size:14px;//
+    font-weight:600;
+
+}
+
+.color-chip:hover{
+
+    transform:translateY(-2px);
+
+    border-color:#4CAF50;
+
+}
+
+.color-chip.active{
+
+    background:#4CAF50;
+
+    color:#fff;
+
+    border-color:#4CAF50;
+
+    transform:scale(1.12);
+    outline:3px solid #ffffff;
+    outline-offset:2px;
+    box-shadow:0 6px 16px rgba(76,175,80,.25);
+
+}
+
+.size-chip{
+
+    min-width:48px;
+    height:42px;
+
+    padding:0 18px;
+
+    border-radius:12px;
+
+    border:2px solid #ddd;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+
+    background:#fff;
+
+    transition:.25s;
+
+    font-weight:700;
+
+}
+
+.size-chip:hover{
+
+    transform:translateY(-2px);
+
+    border-color:#4CAF50;
+
+}
+.color-chip[data-color="أحمر"]{
+    background:#e53935;
+    color:transparent;
+}
+
+.color-chip[data-color="أزرق"]{
+    background:#1e88e5;
+    color:transparent;
+}
+
+.color-chip[data-color="أسود"]{
+    background:#222;
+    color:transparent;
+}
+
+.color-chip[data-color="أبيض"]{
+    background:#fff;
+    color:transparent;
+    border:2px solid #ccc;
+}
+
+.color-chip[data-color="أخضر"]{
+    background:#43a047;
+    color:transparent;
+}
+
+.color-chip[data-color="أصفر"]{
+    background:#fdd835;
+    color:transparent;
+}
+
+.color-chip[data-color="وردي"]{
+    background:#ec407a;
+    color:transparent;
+}
+
+.color-chip[data-color="بنفسجي"]{
+    background:#8e24aa;
+    color:transparent;
+}
+
+.color-chip[data-color="برتقالي"]{
+    background:#fb8c00;
+    color:transparent;
+}
+
+.color-chip[data-color="رمادي"]{
+    background:#9e9e9e;
+    color:transparent;
+}
+
+.color-chip[data-color="بني"]{
+    background:#795548;
+    color:transparent;
+}
+
+.color-chip[data-color="بيج"]{
+    background:#d7ccc8;
+    color:transparent;
+}
+.size-chip.active{
+
+    background:#4CAF50;
+
+    color:#fff;
+
+    border-color:#4CAF50;
+
+    transform:scale(1.05);
+
+    box-shadow:0 6px 16px rgba(76,175,80,.25);
+
+}
+
+.cart-option{
+
+    font-size:13px;
+
+    color:#666;
+
+    margin-top:4px;
+
+}
+/* ============================= */
+/* Product Price */
+/* ============================= */
+
+.product-price{
+
+    margin-top:14px;
+
+    margin-bottom:10px;
+
+}
+
+.product-price .old-price{
+
+    color:#999;
+
+    text-decoration:line-through;
+
+    font-size:16px;
+
+    margin-bottom:4px;
+
+}
+
+.product-price .new-price{
+
+    color:#454836;
+
+    font-size:24px;
+
+    font-weight:700;
+
+}
+/* ============================= */
+/* Search Suggestions */
+/* ============================= */
+
+.search-wrapper{
+
+    position:relative;
+
+}
+
+#searchSuggestions{
+
+    position:absolute;
+
+    top:100%;
+
+    left:0;
+
+    right:0;
+
+    margin-top:8px;
+
+    background:#fff;
+
+    border-radius:14px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    overflow:hidden;
+
+    display:none;
+
+    z-index:999;
+
+}
+
+.search-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:10px 14px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.search-item:hover{
+
+    background:#f5f5f5;
+
+}
+
+.search-item img{
+
+    width:46px;
+
+    height:46px;
+
+    object-fit:cover;
+
+    border-radius:10px;
+
+}
+
+.search-info{
+
+    flex:1;
+
+}
+
+.search-name{
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+.search-price{
+
+    color:#2e7d32;
+
+    font-size:13px;
+
+    margin-top:3px;
+
+}
 .lazy-image{
 
-    background:#f3f3f3;
+    opacity:0;
 
-    background-image:linear-gradient(
-        90deg,
-        #f3f3f3 0%,
-        #ececec 50%,
-        #f3f3f3 100%
-    );
-
-    background-size:200% 100%;
-
-    animation:skeleton 1.2s infinite;
+    transition:opacity .25s ease;
 
 }
 
 .lazy-image.loaded{
 
-    animation:none;
-
-    background:none;
-
-}
-
-@keyframes skeleton{
-
-    from{
-
-        background-position:200% 0;
-
-    }
-
-    to{
-
-        background-position:-200% 0;
-
-    }
+    opacity:1;
 
 }
