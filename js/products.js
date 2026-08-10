@@ -327,6 +327,7 @@ function updateSuggestions(){
                 suggestions.style.display="none";
 
                 search.value="";
+                updateProducts();
 
                 openProduct(product);
             }
@@ -347,7 +348,25 @@ search.addEventListener("input",()=>{
 },250);
 });
 
-category.addEventListener("change",updateProducts);
+category.addEventListener("change",()=>{
+
+    if(category.value===""){
+
+        search.value="";
+
+        const suggestions = document.getElementById("searchSuggestions");
+
+        if(suggestions){
+
+            suggestions.style.display="none";
+
+        }
+
+    }
+
+    updateProducts();
+
+});
 
 sort.addEventListener("change",updateProducts);
 
