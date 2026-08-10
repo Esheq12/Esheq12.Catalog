@@ -275,7 +275,11 @@ function sendWhatsApp(){
 
         "_blank"
     );
+cart = [];
 
+updateCartBar();
+
+cartSheet.classList.remove("show");
 }
 function clearCart(){
 
