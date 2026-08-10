@@ -319,8 +319,7 @@ document.querySelector(".close").onclick = () => {
     setTimeout(()=>{
 
         modal.style.display = "none";
-      // search.value="";
-       updateProducts();//
+    
     },250);
 
 };
