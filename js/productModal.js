@@ -9,6 +9,13 @@ function openProduct(product){
     product.Image5
 
 ].filter(Boolean);
+// تحميل صور المنتج مسبقًا
+images.forEach(src => {
+
+    const img = new Image();
+
+    img.src = src;
+});
     
    modalBody.innerHTML = `
 
