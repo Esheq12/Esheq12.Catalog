@@ -143,9 +143,9 @@ ${product["الوصف"] || "لا يوجد وصف"}
         🛒 إضافة للسلة
     </button>
 
-    <button class="product-share">
-        ↗️ مشاركة المنتج
-    </button>
+    <button class="product-share" aria-label="مشاركة المنتج" title="مشاركة المنتج">
+    ↗
+</button>
 
 </div>
 
