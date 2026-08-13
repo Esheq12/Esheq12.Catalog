@@ -941,7 +941,7 @@ h1{
 .product-actions {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 14px;
     margin-top: 18px;
 }
 
@@ -950,22 +950,41 @@ h1{
 }
 
 .product-share {
-    width: 48px;
-    height: 48px;
-    flex: 0 0 48px;
-    border: 1px solid #e5e5e5;
-    border-radius: 12px;
-    background: #fff;
-    color: #333;
-    font-size: 24px;
-    font-family: inherit;
+    width: 46px;
+    height: 46px;
+    flex: 0 0 46px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
+    padding: 0;
+    border: none;
+    background: transparent;
+
+    color: #4b503c;
+
     cursor: pointer;
-    transition: 0.2s ease;
+
+    transition: transform 0.2s ease,
+                opacity 0.2s ease;
+}
+
+.product-share svg {
+    width: 28px;
+    height: 28px;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .product-share:active {
-    transform: scale(0.94);
+    transform: scale(0.9);
+}
+
+.product-share:hover {
+    opacity: 0.7;
 }
