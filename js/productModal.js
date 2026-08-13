@@ -143,8 +143,14 @@ ${product["الوصف"] || "لا يوجد وصف"}
         🛒 إضافة للسلة
     </button>
 
-    <button class="product-share" aria-label="مشاركة المنتج" title="مشاركة المنتج">
-    ↗
+   <button class="product-share" aria-label="مشاركة المنتج" title="مشاركة المنتج">
+
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 16V4"></path>
+        <path d="M7 9l5-5 5 5"></path>
+        <path d="M5 20h14"></path>
+    </svg>
+
 </button>
 
 </div>
@@ -224,7 +230,7 @@ addToCart(product, selectedColor, selectedSize);
 
         title: product["الاسم"],
 
-        text: `تصفح هذا المنتج 🌿\n${product["الاسم"]}`,
+        text: `تصفح هذا المنتج \n${product["الاسم"]}`,
 
         url: url.toString()
 
