@@ -137,9 +137,17 @@ ${size.trim()}
 ${product["الوصف"] || "لا يوجد وصف"}
 </p>
 
-<button class="product-add-cart">
-🛒 إضافة للسلة
-</button>
+<div class="product-actions">
+
+    <button class="product-add-cart">
+        🛒 إضافة للسلة
+    </button>
+
+    <button class="product-share">
+        ↗️ مشاركة المنتج
+    </button>
+
+</div>
 
 `;
 let selectedColor = "";
@@ -204,7 +212,44 @@ addToCart(product, selectedColor, selectedSize);
 
     },250);
 };
-    
+    modalBody.querySelector(".product-share").onclick = async ()=>{
+
+    const url = new URL(window.location.href);
+
+    url.search = "";
+
+    url.searchParams.set("product", product.ID);
+
+    const shareData = {
+
+        title: product["الاسم"],
+
+        text: `تصفح هذا المنتج 🌿\n${product["الاسم"]}`,
+
+        url: url.toString()
+
+    };
+
+    if(navigator.share){
+
+        try{
+
+            await navigator.share(shareData);
+
+        }catch(error){
+
+            // المستخدم أغلق نافذة المشاركة
+        }
+
+    }else{
+
+        await navigator.clipboard.writeText(url.toString());
+
+        alert("تم نسخ رابط المنتج 🌿");
+
+    }
+
+};
 let currentImage = 0;
 let startX = 0;
 const galleryImage = document.getElementById("galleryImage");
