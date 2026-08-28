@@ -9,6 +9,13 @@ function openProduct(product){
     product.Image5
 
 ].filter(Boolean);
+// تحميل صور المنتج مسبقًا
+images.forEach(src => {
+
+    const img = new Image();
+
+    img.src = src;
+});
     
    modalBody.innerHTML = `
 
@@ -137,9 +144,23 @@ ${size.trim()}
 ${product["الوصف"] || "لا يوجد وصف"}
 </p>
 
-<button class="product-add-cart">
-🛒 إضافة للسلة
+<div class="product-actions">
+
+    <button class="product-add-cart">
+        🛒 إضافة للسلة
+    </button>
+
+   <button class="product-share" aria-label="مشاركة المنتج" title="مشاركة المنتج">
+
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 16V4"></path>
+        <path d="M7 9l5-5 5 5"></path>
+        <path d="M5 20h14"></path>
+    </svg>
+
 </button>
+
+</div>
 
 `;
 let selectedColor = "";
@@ -204,7 +225,44 @@ addToCart(product, selectedColor, selectedSize);
 
     },250);
 };
-    
+    modalBody.querySelector(".product-share").onclick = async ()=>{
+
+    const url = new URL(window.location.href);
+
+    url.search = "";
+
+    url.searchParams.set("product", product.ID);
+
+    const shareData = {
+
+        title: product["الاسم"],
+
+        text: `تصفح هذا المنتج \n${product["الاسم"]}`,
+
+        url: url.toString()
+
+    };
+
+    if(navigator.share){
+
+        try{
+
+            await navigator.share(shareData);
+
+        }catch(error){
+
+            // المستخدم أغلق نافذة المشاركة
+        }
+
+    }else{
+
+        await navigator.clipboard.writeText(url.toString());
+
+        alert("تم نسخ رابط المنتج 🌿");
+
+    }
+
+};
 let currentImage = 0;
 let startX = 0;
 const galleryImage = document.getElementById("galleryImage");
