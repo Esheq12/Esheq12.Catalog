@@ -150,16 +150,14 @@ cartBody.innerHTML += `
         </div>
 
        <div class="cart-buttons">
+      <button class="checkout-btn" onclick="sendWhatsApp()">
 
+         إرسال الطلب عبر واتساب
+
+    </button>
     <button class="clear-btn" onclick="clearCart()">
 
         🗑 إفراغ السلة
-
-    </button>
-
-    <button class="checkout-btn" onclick="sendWhatsApp()">
-
-         إرسال الطلب عبر واتساب
 
     </button>
 
