@@ -193,25 +193,21 @@ function openCart(){
                 <span>${total} ر.س</span>
 
             </div>
+ <div class="cart-buttons">
+      <button class="checkout-btn" onclick="sendWhatsApp()">
 
-            <button
-                class="whatsapp-order"
-                onclick="sendWhatsApp()">
+         إرسال الطلب عبر واتساب
 
-                إتمام الطلب عبر واتساب
+    </button>
+    <button class="clear-btn" onclick="clearCart()">
 
-            </button>
+        🗑 إفراغ السلة
 
-            <button
-                class="clear-btn"
-                onclick="clearCart()">
+    </button>
 
-                🗑 إفراغ السلة
-
-            </button>
-
-        </div>
-
+</div>
+    </div>
+         
     `;
 
     cartSheet.classList.add("show");
