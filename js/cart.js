@@ -38,31 +38,54 @@ function updateCartBar(){
 
     if(cart.length === 0){
 
-    cartBar.style.display = "none";
+        cartBar.style.display = "none";
 
-    localStorage.removeItem("cart");
+        localStorage.removeItem("cart");
 
-    return;
-}
+        return;
+    }
+
     cartBar.style.display = "flex";
+
 
     const totalQty = cart.reduce(
 
         (sum,item)=>sum + item.qty,
+
         0
     );
+
 
     const totalPrice = cart.reduce(
-        (sum,item)=>
-            sum + Number(item["السعر"]) * item.qty,
+
+        (sum,item)=>{
+
+            const price =
+                Number(item["السعر بعد الخصم"] || item["السعر"]);
+
+            return sum + price * item.qty;
+
+        },
+
         0
     );
 
-    cartCount.textContent = `🛒 ${totalQty} منتج`;
 
-    cartTotal.textContent = `${totalPrice} ر.س`;
+    cartCount.textContent =
+        `🛒 ${totalQty} منتج`;
 
-    localStorage.setItem("cart", JSON.stringify(cart));
+    cartTotal.textContent =
+        `${totalPrice} ر.س`;
+
+
+    localStorage.setItem(
+
+        "cart",
+
+        JSON.stringify(cart)
+
+    );
+
 }
 
 // =====================================
@@ -73,7 +96,7 @@ function openCart(){
 
     cartBody.innerHTML = "";
 
-    if(cart.length===0){
+    if(cart.length === 0){
 
         cartBody.innerHTML = `
 
@@ -81,80 +104,101 @@ function openCart(){
                 السلة فارغة 🌿
             </p>
         `;
+
     }else{
 
-       cart.forEach(item=>{
+        cart.forEach(item=>{
 
-    cartBody.innerHTML += `
+            const price =
+                Number(item["السعر بعد الخصم"] || item["السعر"]);
 
-        <div class="cart-item">
+            cartBody.innerHTML += `
 
-            <img src="${item.Image}" class="cart-image">
+                <div class="cart-item">
 
-            <div class="cart-info">
+                    <img src="${item.Image}" class="cart-image">
 
-                <h3>${item["الاسم"]}</h3>
-${
-item.selectedColor
-?
-`<div class="cart-option">🎨 ${item.selectedColor}</div>`
-:
-""
-}
+                    <div class="cart-info">
 
-${
-item.selectedSize
-?
-`<div class="cart-option">📏 ${item.selectedSize}</div>`
-:
-""
-}
+                        <h3>${item["الاسم"]}</h3>
 
-                <div class="cart-price">
+                        ${
+                            item.selectedColor
+                            ?
+                            `<div class="cart-option">
+                                🎨 ${item.selectedColor}
+                            </div>`
+                            :
+                            ""
+                        }
 
-                    ${item["السعر"]} ر.س
+                        ${
+                            item.selectedSize
+                            ?
+                            `<div class="cart-option">
+                                📏 ${item.selectedSize}
+                            </div>`
+                            :
+                            ""
+                        }
+
+                        <div class="cart-price">
+
+                            ${price} ر.س
+
+                        </div>
+
+                        <div class="cart-controls">
+
+                            <button onclick="changeQty('${item.ID}',-1)">
+                                −
+                            </button>
+
+                            <span>${item.qty}</span>
+
+                            <button onclick="changeQty('${item.ID}',1)">
+                                +
+                            </button>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
-                <div class="cart-controls">
-
-    <button onclick="changeQty('${item.ID}',-1)">−</button>
-
-    <span>${item.qty}</span>
-
-    <button onclick="changeQty('${item.ID}',1)">+</button>
-
-</div>
-            </div>
-        </div>
-        <hr>
-    `;
-});
+                <hr>
+            `;
+        });
     }
-const total = cart.reduce((sum,item)=>{
 
-    return sum + Number(item["السعر"]) * item.qty;
 
-},0);
+    const total = cart.reduce((sum,item)=>{
 
-cartBody.innerHTML += `
+        const price =
+            Number(item["السعر بعد الخصم"] || item["السعر"]);
 
-    <div class="cart-footer">
+        return sum + price * item.qty;
 
-        <div class="cart-total">
+    },0);
 
-            الإجمالي
 
-            <span>${total} ر.س</span>
+    cartBody.innerHTML += `
 
-        </div>
+        <div class="cart-footer">
 
-       <div class="cart-buttons">
-      <button class="checkout-btn" onclick="sendWhatsApp()">
+            <div class="cart-total">
 
-         إرسال الطلب عبر واتساب
+                الإجمالي
 
-    </button>
+                <span>${total} ر.س</span>
+
+            </div>
+
+            <button class="whatsapp-order" onclick="sendWhatsApp()">
+
+                إتمام الطلب عبر واتساب
+
+            </button>
     <button class="clear-btn" onclick="clearCart()">
 
         🗑 إفراغ السلة
@@ -226,58 +270,96 @@ window.addEventListener("click",(e)=>{
 });
 function sendWhatsApp(){
 
-    let message = "السلام عليكم ، أرغب بطلب:%0A%0A";
+    let message =
+        "السلام عليكم ، أرغب بطلب:%0A%0A";
+
+
     cart.forEach(item=>{
 
-    const price = item["السعر بعد الخصم"] || item["السعر"];
+        const price =
+            Number(item["السعر بعد الخصم"] || item["السعر"]);
 
-    message += `${item["الاسم"]}%0A`;
 
-    if(item.selectedColor){
+        message +=
+            `${item["الاسم"]}%0A`;
 
-        message += `اللون: ${item.selectedColor}%0A`;
 
-    }
+        if(item.selectedColor){
 
-    if(item.selectedSize){
+            message +=
+                `اللون: ${item.selectedColor}%0A`;
 
-        message += `المقاس: ${item.selectedSize}%0A`;
+        }
 
-    }
 
-    message += `الكمية: ${item.qty}%0A`;
-    message += `السعر: ${price} ر.س%0A`;
+        if(item.selectedSize){
 
-    if(item.Image){
+            message +=
+                `المقاس: ${item.selectedSize}%0A`;
 
-        message += `صورة المنتج:%0A${item.Image}%0A`;
+        }
 
-    }
 
-    message += `────────────%0A`;
+        message +=
+            `الكمية: ${item.qty}%0A`;
 
-});
-    const total = cart.reduce((sum,item)=>{
 
-        return sum + Number(item["السعر"]) * item.qty;
+        message +=
+            `السعر: ${price} ر.س%0A`;
 
-    },0);
 
-    message += `الإجمالي: ${total} ر.س`;
+        if(item.Image){
 
-    const phone = "966564489896";
+            message +=
+                `صورة المنتج:%0A${item.Image}%0A`;
+
+        }
+
+
+        message +=
+            `────────────%0A`;
+
+    });
+
+
+    const total = cart.reduce(
+
+        (sum,item)=>{
+
+            const price =
+                Number(item["السعر بعد الخصم"] || item["السعر"]);
+
+            return sum + price * item.qty;
+
+        },
+
+        0
+    );
+
+
+    message +=
+        `الإجمالي: ${total} ر.س`;
+
+
+    const phone =
+        "966564489896";
+
 
     window.open(
 
         `https://wa.me/${phone}?text=${message}`,
 
         "_blank"
+
     );
-cart = [];
 
-updateCartBar();
 
-cartSheet.classList.remove("show");
+    cart = [];
+
+    updateCartBar();
+
+    cartSheet.classList.remove("show");
+
 }
 function clearCart(){
 
