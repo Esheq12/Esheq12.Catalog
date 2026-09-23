@@ -199,6 +199,7 @@ function openCart(){
                 إتمام الطلب عبر واتساب
 
             </button>
+            
     <button class="clear-btn" onclick="clearCart()">
 
         🗑 إفراغ السلة
@@ -206,7 +207,6 @@ function openCart(){
     </button>
 
 </div>
-    </div>
 
 `;
     cartSheet.classList.add("show");
